@@ -1,15 +1,35 @@
+package application;
+
 import javafx.application.Application;
-import javafx.scene.layout.BorderPane;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.IOException;
+
+import static javafx.application.Application.launch;
 
 
 public class Main extends Application{
     @Override
-    public void start(Stage primaryStage){
+    public void start(Stage primaryStage) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/MainView.fxml"));
+            Parent parent = loader.load();
+            Scene mainScene = new Scene(parent);
+            primaryStage.setScene(mainScene);
+            primaryStage.setTitle("JavaFX application");
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void main(String[] args){
+        launch(args);
 
     }
 }
 
 
-void main() {
-}
