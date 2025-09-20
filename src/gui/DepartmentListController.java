@@ -46,11 +46,11 @@ public class DepartmentListController implements Initializable{
     }
 
     private void initializeNodes(){
-        tableColumnId.setCellValueFactory(cellData ->
-                new ReadOnlyObjectWrapper<>(cellData.getValue().id()));
-        tableColumnName.setCellValueFactory(cellData ->
-                new ReadOnlyStringWrapper(cellData.getValue().name()));
+        tableColumnId.setCellValueFactory(cd ->
+                new ReadOnlyObjectWrapper<>(cd.getValue().id()));   // <- id()
 
+        tableColumnName.setCellValueFactory(cd ->
+                new ReadOnlyStringWrapper(cd.getValue().name()));
         Stage stage = (Stage) Main.getMainScene().getWindow();
         tableViewDepartment.prefHeightProperty().bind(stage.heightProperty());
     }
